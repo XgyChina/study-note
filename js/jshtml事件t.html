@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>html和js测试</title>
+    <style>
+      #parent {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 3;
+        background: green;
+      }
+      #child {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://www.cnblogs.com/bfgis/p/5460191.html">资料</a>
+    <div id="parent">
+      父元素
+      <div id="child">
+        子元素
+      </div>
+    </div>
+    <script type="text/javascript">
+      var parent = document.getElementById("parent");
+      var child = document.getElementById("child");
+
+      document.body.addEventListener(
+        "click",
+        function(e) {
+          console.log("click-body");
+        },
+        false
+      );
+
+      parent.addEventListener(
+        "click",
+        function(e) {
+          console.log("click-parent");
+        },
+        false
+      );
+
+      //新增事件捕获事件代码
+      parent.addEventListener(
+        "click",
+        function(e) {
+          console.log("click-parent--事件捕获");
+        },
+        true
+      );
+
+      child.addEventListener(
+        "click",
+        function(e) {
+          console.log("click-child");
+          e.stopPropagation(); // 会阻止子元素事件冒泡 ，父元素点击事件不会触发
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

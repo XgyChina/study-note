@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style></style>
+  </head>
+  <body>
+    <pre>
+            IFC 
+            Inline Formatting Contexts，也就是“内联格式化上下文”。
+            符合以下任一条件即会生成一个IFC
+            + 块级元素中仅包含内联级别元素
+        </pre
+    >
+    <a
+      >水平居中：当一个块要在环境中水平居中时，设置其为 inline-block
+      则会在外层产生 IFC，通过设置父容器 text-align:center 则可以使其水平居中。 </a
+    ><br />
+    <a
+      >垂直居中：创建一个IFC，用其中一个元素撑开父元素的高度，然后设置其
+      vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。</a
+    >
+    <div style="text-align: center;">
+      <img style="width: 100px;height: 100px;vertical-align:middle;" src="head.png"/>
+      <span style="vertical-align:middle">aaa</span>
+      <img style="width: 50px;height: 50px;vertical-align:middle" src="head.png" />
+      <span style="font-size: 30px;vertical-align:middle">bbb</span>
+    </div>
+  </body>
+</html>
