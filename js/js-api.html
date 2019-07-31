@@ -20,6 +20,7 @@
     <button onclick="objectList()">遍历对象</button>
     <button onclick="isStr()">判断数字是字符串还是数字</button>
     <button onclick="testObjChange()">对象数据的污染</button>
+    <button onclick="testReg()">正则表达式测试</button>
 
     <script type="text/javascript">
       function isStr() {
@@ -60,6 +61,17 @@
         console.log(aaa.slice(1, 4), "---aaa.slice(1, 4)");
         console.log(aaa, "---aaa");
         console.log(bbb, "---bbb");
+
+        var arr = ["George", "John", "Thomas", "James", "Adrew", "Martin"];
+        arr.splice(2, 1, "William");
+        console.log(arr, "------4444444");
+        nestedNumbers = [[1], [2]];
+        numbersCopy = [];
+        for (i = 0; i < nestedNumbers.length; i++) {
+          numbersCopy.push(nestedNumbers[i]);
+        }
+        numbersCopy[0].push(300);
+        console.log(nestedNumbers, numbersCopy);
       }
 
       function objectList() {
@@ -73,14 +85,22 @@
         var a = { a: "a1", b: "b1" };
         var b = a;
         b.a = "a2"; // 会影响a.a
-        console.log(a.a, "之前的值，被b污染了");
-        console.log(b.a, "之后的值");
+        console.log(a.a, "之前的值，被b污染了"); // a2
+        console.log(b.a, "之后的值"); // a2
         var c = { a: "a1", b: "b1" };
         var d = {};
         d.a = c.a;
         d.a = "a2"; // 不会影响c.a，因为是基本数据类型
-        console.log(c.a, "之前的值");
-        console.log(d.a, "之后的值");
+        console.log(c.a, "之前的值"); // a1
+        console.log(d.a, "之后的值"); // a2
+      }
+
+      function testReg() {
+        if (/^[a-z,A-Z,0-9,-]+$/.test("aaa00a12-ddc")) {
+          console.log(true, "验证通过");
+        } else {
+          console.log(false, "验证失败");
+        }
       }
     </script>
   </body>

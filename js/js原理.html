@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <a
+      href="https://www.clloz.com/programming/front-end/js/2019/04/23/js-operator-supplements/?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com"
+    >
+      参考资料
+    </a>
+    <a onclick="setVal()">变量赋值顺序</a>
+    <a onclick="varGoTop()">变量提升</a>
+    <script>
+      function setVal() {
+        var a = { n: 1 };
+        var b = a;
+        a.x = a = { n: 2 };
+        console.log(a.x); //undefined
+        console.log(b.x); //{n: 2};
+      }
+
+      function varGoTop() {
+        a = 1;
+        var a;
+        console.log(a); // 1
+        console.log(b); // undefined
+        var b = 1;
+      }
+    </script>
+  </body>
+</html>
