@@ -21,6 +21,7 @@
     <button onclick="isStr()">判断数字是字符串还是数字</button>
     <button onclick="testObjChange()">对象数据的污染</button>
     <button onclick="testReg()">正则表达式测试</button>
+    <button onclick="testIndexOf()">indexOf的位置</button>
 
     <script type="text/javascript">
       function isStr() {
@@ -101,6 +102,13 @@
         } else {
           console.log(false, "验证失败");
         }
+      }
+
+      function testIndexOf() {
+        var a = 'abcdefg';
+        console.log(a.indexOf('def'), '------a.indexOf("def")');
+        var b = 'http://12323/index.html#/qualityddd';
+        console.log(b.substring(b.indexOf('#/'), b.length - 1));
       }
     </script>
   </body>

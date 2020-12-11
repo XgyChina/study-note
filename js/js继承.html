@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <a onclick="setVal()">原型类式继承</a>
+    <script>
+
+        
+      function Person(firstName) {
+        this.firstName = firstName;
+        this.mails = ["mail1"];
+      }
+
+      Person.prototype.phone = "123";
+
+      //Person.prototype.mails=["mail1"];
+
+      // 在Person.prototype中加入方法
+      Person.prototype.walk = function() {
+        console.log("I am walking!" + " I'm " + this.firstName);
+      };
+      Person.prototype.sayHello = function() {
+        console.log("Hello, I'm " + this.firstName);
+      };
+
+      ///////////////////////////////create child:　ChinaStudent　　　//////////////////////////////////////////////////////
+      // 定义Student构造器
+      function ChinaStudent(firstName, subject) {
+        // 调用父类构造器, 确保(使用Function#call)"this" 在调用过程中设置正确
+        Person.call(this, firstName);
+        // 初始化Student类特有属性
+        this.subject = subject;
+      }
+
+      ChinaStudent.prototype = Object.create(Person.prototype); // See note below
+
+      //ChinaStudent.prototype=new Person();
+      // 设置"constructor" 属性指向Student
+      ChinaStudent.prototype.constructor = ChinaStudent; //constructor为定义函数的指针，可用来判断对象所属的类
+
+      // 更换"sayHello" 方法
+      ChinaStudent.prototype.sayHello = function() {
+        console.log(
+          "你好, 我是 " + this.firstName + ". 我在学习 " + this.subject + "."
+        );
+      };
+
+      // 加入"sayGoodBye" 方法
+      ChinaStudent.prototype.sayGoodBye = function() {
+        console.log("拜拜!");
+      };
+
+      // 测试实例:
+      var student1 = new ChinaStudent("张三", "程序设计");
+      student1.sayHello();
+      student1.walk();
+      student1.sayGoodBye();
+      console.log(student1.phone);
+      console.log(student1.mails);
+    </script>
+  </body>
+</html>
