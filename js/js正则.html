@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>html和js测试</title>
+    <style></style>
+  </head>
+  <body>
+    <button onclick="getAvCard()">解析番号</button>
+    <script type="text/javascript">
+      function getAvCard() {
+       var name = 'RHJ129.x264中文.mp4_1528967558.srt';
+       var a = name.match(/[a-zA-Z0-9\-]+/g);
+       console.log(a);
+      }
+    </script>
+  </body>
+</html>
